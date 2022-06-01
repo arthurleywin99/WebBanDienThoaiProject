@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebBanDienThoaiProject.Models.Product>
+
+<div class="container">
+    <h4><b>ĐIỆN THOẠI NỔI BẬT NHẤT</b></h4>
+    <div class="_row">
+        @foreach (var item in Model)
+        {
+            <div class="_col-4">
+                <div class="item-product">
+                    <div class="sticker-percent">
+                        <p><b>Giảm 5%</b></p>
+                    </div>
+                    <div>
+                        <a href="@Url.Action("ProductDetails", "Product", new { id = item.ID })">
+                            <img src="~/Content/Images/@item.ImageURL" alt="@item.ProductName" />
+                        </a>
+                    </div>
+                    <div>
+                        <a href="@Url.Action("ProductDetails", "Product", new { id = item.ID })">
+                            <p>@item.ProductName</p>
+                        </a>
+                    </div>
+                    <div>
+                        <p class="current-price">@item.Price&nbsp;đ</p><br>
+                        <p class="old-price">@item.Price&nbsp;đ</p>
+                    </div>
+                    <div class="rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

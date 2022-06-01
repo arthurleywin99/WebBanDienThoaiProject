@@ -1,0 +1,16 @@
+﻿@model IEnumerable<WebBanDienThoaiProject.Models.BrandAdvertisement>
+
+<div class="container">
+    <h4><b>CHUYÊN TRANG THƯƠNG HIỆU</b></h4>
+    <div class="row center">
+        @foreach (var item in Model)
+        {
+            <div class="_col-3">
+                <div class="img-brand">
+                    <img src="~/Content/Images/@item.ImageURL" alt="@item.BrandAdName">
+                </div>
+            </div>
+        }
+
+    </div>
+</div>

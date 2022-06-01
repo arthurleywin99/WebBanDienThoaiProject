@@ -1,0 +1,17 @@
+﻿@model IEnumerable<WebBanDienThoaiProject.Models.ProductType>
+
+<div class="nav-item">
+    <nav>
+        <ul class="root">
+            @foreach (var item in Model)
+            {
+                <li>
+                    <a href="@Url.Action("ProductsByProductType", "Product", new { id = item.ID })">
+                        <i class="@item.IconURL"></i>
+                        <span>@item.ProductTypeName</span>
+                    </a>
+                </li>
+            }
+        </ul>
+    </nav>
+</div>

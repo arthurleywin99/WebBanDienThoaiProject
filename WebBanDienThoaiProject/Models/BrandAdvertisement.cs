@@ -6,17 +6,17 @@ namespace WebBanDienThoaiProject.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("CarouselSlider")]
-    public partial class CarouselSlider
+    [Table("BrandAdvertisement")]
+    public partial class BrandAdvertisement
     {
         public Guid ID { get; set; }
 
         [StringLength(20)]
-        public string SliderName { get; set; }
+        public string BrandAdName { get; set; }
 
         public string ImageURL { get; set; }
 
-        public string UrlTo { get; set; }
+        public string URLTo { get; set; }
 
         public bool? Status { get; set; }
     }

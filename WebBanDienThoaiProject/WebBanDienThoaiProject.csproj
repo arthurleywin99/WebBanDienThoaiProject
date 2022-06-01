@@ -54,6 +54,7 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -128,29 +129,34 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\PhanHoiController.cs" />
-    <Compile Include="Controllers\SanPhamController.cs" />
-    <Compile Include="Controllers\TrangChuController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\RatingController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\AboutUsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountType.cs" />
+    <Compile Include="Models\AdminConfig.cs" />
+    <Compile Include="Models\Advertisement.cs" />
     <Compile Include="Models\Banner.cs" />
-    <Compile Include="Models\BinhLuan.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\BrandAdvertisement.cs" />
     <Compile Include="Models\CarouselSlider.cs" />
-    <Compile Include="Models\ChiTietDonDatHang.cs" />
-    <Compile Include="Models\ChuyenTrangThuongHieu.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Context.cs" />
-    <Compile Include="Models\DonDatHang.cs" />
-    <Compile Include="Models\HoiDap.cs" />
-    <Compile Include="Models\LoaiSanPham.cs" />
-    <Compile Include="Models\LoaiThanhVien.cs" />
-    <Compile Include="Models\NhaCungCap.cs" />
-    <Compile Include="Models\QuangCao.cs" />
-    <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\ThanhVien.cs" />
-    <Compile Include="Models\ThongTinWeb.cs" />
-    <Compile Include="Models\ThuongHieu.cs" />
-    <Compile Include="Models\TinTuc.cs" />
+    <Compile Include="Models\MemberAccount.cs" />
+    <Compile Include="Models\News.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductType.cs" />
+    <Compile Include="Models\QAndA.cs" />
+    <Compile Include="Models\Supplier.cs" />
+    <Compile Include="Models\WebInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -158,7 +164,6 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\style.css" />
     <Content Include="Content\Images\app-store.png" />
     <Content Include="Content\Images\banner\mid_banner.png" />
     <Content Include="Content\Images\footer-logo.png" />
@@ -244,16 +249,23 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\SanPham\ChiTietSanPham.cshtml" />
-    <Content Include="Views\SanPham\DanhSachSanPhamTheoLoai.cshtml" />
+    <Content Include="Views\Product\ProductDetails.cshtml" />
+    <Content Include="Views\Product\ProductsByProductType.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\TrangChu\CarouselSlider.cshtml" />
-    <Content Include="Views\TrangChu\ChuyenTrangThuongHieu.cshtml" />
-    <Content Include="Views\TrangChu\DienThoaiNoiBat.cshtml" />
-    <Content Include="Views\TrangChu\Index.cshtml" />
-    <Content Include="Views\TrangChu\LaptopNoiBat.cshtml" />
-    <Content Include="Views\TrangChu\LoaiSanPham.cshtml" />
-    <Content Include="Views\TrangChu\MidBanner.cshtml" />
+    <Content Include="Views\Home\CarouselSlider.cshtml" />
+    <Content Include="Views\Home\BrandAdvertisements.cshtml" />
+    <Content Include="Views\Home\TopCellPhones.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\TopLaptops.cshtml" />
+    <Content Include="Views\Home\ProductTypes.cshtml" />
+    <Content Include="Views\Home\MidBanner.cshtml" />
+    <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\AboutUs\Index.cshtml" />
+    <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Account\Signin.cshtml" />
+    <Content Include="Views\Account\Signup.cshtml" />
+    <Content Include="Views\Product\SearchProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -270,6 +282,9 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

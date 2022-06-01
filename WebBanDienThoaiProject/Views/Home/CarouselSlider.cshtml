@@ -1,0 +1,14 @@
+﻿@model IEnumerable<WebBanDienThoaiProject.Models.CarouselSlider>
+
+<div class="container menu-slider">
+    <div class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @foreach (var item in Model)
+            {
+                <div class="carousel-item active">
+                    <img src="~/Content/Images/@item.ImageURL" class="d-block w-70" alt="@item.SliderName">
+                </div>
+            }
+        </div>
+    </div>
+</div>

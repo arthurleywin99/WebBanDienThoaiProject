@@ -12,141 +12,162 @@ namespace WebBanDienThoaiProject.Models
         {
         }
 
+        public virtual DbSet<AccountType> AccountTypes { get; set; }
+        public virtual DbSet<AdminConfig> AdminConfigs { get; set; }
+        public virtual DbSet<Advertisement> Advertisements { get; set; }
         public virtual DbSet<Banner> Banners { get; set; }
-        public virtual DbSet<BinhLuan> BinhLuans { get; set; }
+        public virtual DbSet<Brand> Brands { get; set; }
+        public virtual DbSet<BrandAdvertisement> BrandAdvertisements { get; set; }
         public virtual DbSet<CarouselSlider> CarouselSliders { get; set; }
-        public virtual DbSet<ChiTietDonDatHang> ChiTietDonDatHangs { get; set; }
-        public virtual DbSet<ChuyenTrangThuongHieu> ChuyenTrangThuongHieus { get; set; }
-        public virtual DbSet<DonDatHang> DonDatHangs { get; set; }
-        public virtual DbSet<HoiDap> HoiDaps { get; set; }
-        public virtual DbSet<LoaiSanPham> LoaiSanPhams { get; set; }
-        public virtual DbSet<LoaiThanhVien> LoaiThanhViens { get; set; }
-        public virtual DbSet<NhaCungCap> NhaCungCaps { get; set; }
-        public virtual DbSet<QuangCao> QuangCaos { get; set; }
-        public virtual DbSet<SanPham> SanPhams { get; set; }
-        public virtual DbSet<ThanhVien> ThanhViens { get; set; }
-        public virtual DbSet<ThongTinWeb> ThongTinWebs { get; set; }
-        public virtual DbSet<ThuongHieu> ThuongHieus { get; set; }
-        public virtual DbSet<TinTuc> TinTucs { get; set; }
+        public virtual DbSet<Comment> Comments { get; set; }
+        public virtual DbSet<MemberAccount> MemberAccounts { get; set; }
+        public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderDetail> OrderDetails { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<QAndA> QAndAs { get; set; }
+        public virtual DbSet<Supplier> Suppliers { get; set; }
+        public virtual DbSet<WebInfo> WebInfoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Banner>()
-                .Property(e => e.DuongDan)
+            modelBuilder.Entity<AccountType>()
+                .Property(e => e.Discount)
+                .HasPrecision(5, 0);
+
+            modelBuilder.Entity<AccountType>()
+                .HasMany(e => e.MemberAccounts)
+                .WithOptional(e => e.AccountType)
+                .HasForeignKey(e => e.MemberTypeID);
+
+            modelBuilder.Entity<AdminConfig>()
+                .Property(e => e.AdEmail)
+                .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<BinhLuan>()
-                .Property(e => e.NgayBinhLuan)
+            modelBuilder.Entity<AdminConfig>()
+                .Property(e => e.AdPassword)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<AdminConfig>()
+                .Property(e => e.AdPhoneNumber)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Advertisement>()
+                .Property(e => e.BeginDate)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Advertisement>()
+                .Property(e => e.LinkTo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Advertisement>()
+                .Property(e => e.ImageURL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Banner>()
+                .Property(e => e.LinkTo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Brand>()
+                .Property(e => e.LogoURL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<BrandAdvertisement>()
+                .Property(e => e.URLTo)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CarouselSlider>()
-                .Property(e => e.DuongDan)
+                .Property(e => e.UrlTo)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ChuyenTrangThuongHieu>()
-                .Property(e => e.DuongDan)
+            modelBuilder.Entity<Comment>()
+                .Property(e => e.CommentDate)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.NgayDat)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.NgayGiao)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.UuDai)
-                .HasPrecision(5, 0);
-
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.SDTDat)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.EmailDat)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DonDatHang>()
-                .Property(e => e.MaChuyenKhoan)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<DonDatHang>()
-                .HasMany(e => e.ChiTietDonDatHangs)
-                .WithRequired(e => e.DonDatHang)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<HoiDap>()
+            modelBuilder.Entity<MemberAccount>()
                 .Property(e => e.Email)
+                .IsFixedLength()
                 .IsUnicode(false);
 
-            modelBuilder.Entity<HoiDap>()
-                .Property(e => e.DienThoai)
+            modelBuilder.Entity<MemberAccount>()
+                .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LoaiThanhVien>()
-                .Property(e => e.UuDai)
+            modelBuilder.Entity<MemberAccount>()
+                .Property(e => e.PhoneNumber)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MemberAccount>()
+                .HasMany(e => e.Comments)
+                .WithOptional(e => e.MemberAccount)
+                .HasForeignKey(e => e.MemberID);
+
+            modelBuilder.Entity<News>()
+                .Property(e => e.ImageURL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<News>()
+                .Property(e => e.PostDate)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<News>()
+                .Property(e => e.LinkTo)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Discount)
                 .HasPrecision(5, 0);
 
-            modelBuilder.Entity<NhaCungCap>()
-                .Property(e => e.DienThoai)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<QuangCao>()
-                .Property(e => e.ThoiGianBatDau)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<QuangCao>()
-                .Property(e => e.ThoiGianKetThuc)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<QuangCao>()
-                .Property(e => e.DuongDan)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<QuangCao>()
-                .Property(e => e.HinhAnh)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<SanPham>()
-                .Property(e => e.DonGia)
+            modelBuilder.Entity<Order>()
+                .Property(e => e.Total)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<SanPham>()
-                .Property(e => e.NgayCapNhat)
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderPhone)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SanPham>()
-                .Property(e => e.HinhAnh)
+            modelBuilder.Entity<Order>()
+                .Property(e => e.OrderEmail)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.ChiTietDonDatHangs)
-                .WithRequired(e => e.SanPham)
+            modelBuilder.Entity<Order>()
+                .Property(e => e.TransferID)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Order>()
+                .HasMany(e => e.OrderDetails)
+                .WithRequired(e => e.Order)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ThanhVien>()
+            modelBuilder.Entity<OrderDetail>()
+                .Property(e => e.PriceNow)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<Product>()
+                .Property(e => e.ImageURL)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Product>()
+                .HasMany(e => e.OrderDetails)
+                .WithRequired(e => e.Product)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<QAndA>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ThanhVien>()
-                .Property(e => e.DienThoai)
+            modelBuilder.Entity<QAndA>()
+                .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<ThuongHieu>()
-                .Property(e => e.Logo)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TinTuc>()
-                .Property(e => e.HinhBia)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TinTuc>()
-                .Property(e => e.NgayDang)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<TinTuc>()
-                .Property(e => e.DuongDan)
+            modelBuilder.Entity<Supplier>()
+                .Property(e => e.PhoneNumber)
                 .IsUnicode(false);
         }
     }

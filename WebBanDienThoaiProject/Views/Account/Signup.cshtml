@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/Content/Site.css"/>
+    <title>Đăng Ký</title>
+</head>
+<body>
+    <div class="container">
+        <img class="center-image" src="~/Content/Images/head-logo.png" alt="">
+    </div>
+    <div class="small-container border-frames">
+        <h1>Đăng Ký</h1>
+        <div>
+            <label>
+                Địa chỉ Email
+            </label>
+            <input class="input-text" type="email" placeholder="Nhập địa chỉ Email">
+        </div>
+        <div>
+            <label>
+                Số điện thoại
+            </label>
+            <input class="input-text" type="text" placeholder="Nhập số điện thoại">
+        </div>
+        <div>
+            <label class="">
+                Mật khẩu
+            </label>
+            <input class="input-text" type="password" placeholder="Nhập mật khẩu">
+        </div>
+        <div>
+            <label>
+                Nhập lại mật khẩu
+            </label>
+            <input class="input-text" type="password" placeholder="Nhập lại mật khẩu">
+        </div>
+        <div>
+            <label>
+                Họ Và Tên
+            </label>
+            <input class="input-text" type="password" placeholder="Nhập họ và tên">
+        </div>
+        <div class="inline">
+            <input type="checkbox">
+            <label>
+                &nbsp;Đồng ý với các điều khoản của chúng tôi
+            </label>
+        </div>
+        <a class="button yellow medium">
+            ĐĂNG KÝ
+        </a>
+        <div class="inline">
+            <p>
+                Đã có tài khoản? &nbsp;
+            </p>
+            <a class="text-blue" href="@Url.Action("Signin", "Account")">
+                Đăng nhập
+            </a>
+        </div>
+    </div>
+</body>
+</html>

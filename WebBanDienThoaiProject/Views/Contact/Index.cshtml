@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <!--NAVBAR LOẠI SẢN PHẨM-->
+    @Html.Action("ProductTypes", "Home")
+    <div class="_row">
+        <div class="_col-2">
+            <div class="left-content">
+                <form action="">
+                    <h4><b>APPLE XIN HÂN HẠNH HỖ TRỢ QUÝ KHÁCH</b></h4>
+                    <div class="border-frames">
+                        <div class="clearfix">
+                            <label>Quý khách đang quan tâm về:&nbsp;</label>
+                            <select></select>
+                        </div>
+                        <div class="clearfix">
+                            <label>Tiêu đề:&nbsp;</label>
+                            <input type="text">
+                        </div>
+                        <div class="clearfix">
+                            <label>Nội dung:&nbsp;</label>
+                            <textarea rows="5"></textarea>
+                        </div>
+                        <div class="clearfix">
+                            <label>Họ và tên:&nbsp;</label>
+                            <input type="text">
+                        </div>
+                        <div class="clearfix">
+                            <label>Địa chỉ:&nbsp;</label>
+                            <input type="text">
+                        </div>
+                        <div class="clearfix">
+                            <label>Số điện thoại:&nbsp;</label>
+                            <input type="text">
+                        </div>
+                    </div>
+                </form>
+                <button class="btn-contact yellow" type="submit">GỬI LIÊN HỆ</button>
+            </div>
+        </div>
+        <div class="_col-2 ">
+            <div class="right-content">
+                <h4><b>THÔNG TIN LIÊN HỆ KHÁC</b></h4>
+                <hr>
+                <p>Báo chí, hợp tác: Liên hệ <a href="">baochi@apple.com</a></p>
+                <p>Tổng đài tư vấn, hỗ trợ khách hàng (7h30 đến 22h): <span class="tel">0354.321.915</span></p>
+                <p>Tổng đài khiếu nại: <span class="tel">1800.1062</span></p>
+                <p>Email: <a href="">cskh@apple.com</a></p>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d979.6826805933056!2d106.77398102922433!3d10.831907299517741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317527010fcb280b%3A0xbece03f175c4325c!2zMjcsIDEgxJDGsOG7nW5nIFPhu5EgMTQ3LCBQaMaw4bubYyBMb25nIEIsIFF14bqtbiA5LCBUaMOgbmggcGjhu5EgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1653980646185!5m2!1svi!2s"
+                        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </div>
+</div>

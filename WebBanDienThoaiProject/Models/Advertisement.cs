@@ -6,17 +6,22 @@ namespace WebBanDienThoaiProject.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Banner")]
-    public partial class Banner
+    [Table("Advertisement")]
+    public partial class Advertisement
     {
         public Guid ID { get; set; }
 
         [StringLength(100)]
-        public string BannerName { get; set; }
+        public string AdvertisementName { get; set; }
 
-        public string ImageURL { get; set; }
+        [StringLength(12)]
+        public string BeginDate { get; set; }
+
+        public DateTime? EndDate { get; set; }
 
         public string LinkTo { get; set; }
+
+        public string ImageURL { get; set; }
 
         public bool? Status { get; set; }
     }

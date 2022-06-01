@@ -1,0 +1,51 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.2.0/css/all.css">
+    <link rel="stylesheet" href="/Content/Site.css" />
+    <title>Đăng Nhập</title>
+</head>
+<body>
+    <div class="container">
+        <img class="center-image" src="~/Content/Images/head-logo.png" alt="">
+    </div>
+    <div class="small-container border-frames">
+        <h1>Đăng Nhập</h1>
+        <div>
+            <label>
+                Tên tài khoản
+            </label>
+            <input class="input-text" type="email" placeholder="Nhập địa chỉ Email">
+        </div>
+        <div>
+            <label class="">
+                Mật khẩu
+            </label>
+            <input class="input-text" type="password" placeholder="Nhập mật khẩu">
+        </div>
+        <a class="button blue medium">
+            ĐĂNG NHẬP
+        </a>
+        <p class="text-center text-style">
+            <br>Chưa có tài khoản? &nbsp;
+        </p>
+        <a href="@Url.Action("Signup", "Account")" class="button gray medium">
+            Tạo tài khoản
+        </a>
+        <a href="#">
+            <p class="text-right text-style">
+                Quên mật khẩu?
+            </p>
+        </a>
+    </div>
+</body>
+</html>
+
