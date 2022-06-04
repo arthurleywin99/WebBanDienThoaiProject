@@ -37,7 +37,7 @@
                 <a class="button red">
                     <strong>MUA NGAY<br>(Giao tận nơi hoặc lấy tại cửa hàng)</strong>
                 </a>
-                <a class="button blue">
+                <a class="button blue" href="@Url.Action("AddToCart", "ShoppingCart", new { @ProductID = Model.ID, @CurrentURL = Request.Url.ToString() })">
                     <strong>THÊM VÀO GIỎ HÀNG<br>(Tiếp tục mua sắm)</strong>
                 </a>
             </div>

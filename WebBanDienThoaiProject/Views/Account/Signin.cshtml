@@ -1,4 +1,4 @@
-﻿
+﻿@model WebBanDienThoaiProject.ViewModels.SigninViewModel
 @{
     Layout = null;
 }
@@ -14,38 +14,49 @@
     <title>Đăng Nhập</title>
 </head>
 <body>
-    <div class="container">
-        <img class="center-image" src="~/Content/Images/head-logo.png" alt="">
-    </div>
-    <div class="small-container border-frames">
-        <h1>Đăng Nhập</h1>
-        <div>
-            <label>
-                Tên tài khoản
-            </label>
-            <input class="input-text" type="email" placeholder="Nhập địa chỉ Email">
+    <main>
+        <div class="small-container">
+            <img class="center-image" src="~/Content/Images/head-logo.png" alt="">
         </div>
-        <div>
-            <label class="">
-                Mật khẩu
-            </label>
-            <input class="input-text" type="password" placeholder="Nhập mật khẩu">
-        </div>
-        <a class="button blue medium">
-            ĐĂNG NHẬP
-        </a>
-        <p class="text-center text-style">
-            <br>Chưa có tài khoản? &nbsp;
-        </p>
-        <a href="@Url.Action("Signup", "Account")" class="button gray medium">
-            Tạo tài khoản
-        </a>
-        <a href="#">
-            <p class="text-right text-style">
-                Quên mật khẩu?
+        <div class="small-container border-frames">
+            <h1>Đăng Nhập</h1>
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div class="alert alert-success">
+                    <strong>@TempData["AlertMessage"]</strong>
+                </div>
+            }
+            @using (Html.BeginForm("Signin", "Account"))
+            {
+                <div>
+                    <label>
+                        Tài khoản
+                    </label>
+                    @Html.TextBoxFor(p => p.Username, new { @class = "input-text", type = "email", placeholder = "Nhập địa chỉ Email" })
+                </div>
+                <p class="danger">@Html.ValidationMessageFor(p => p.Username)</p>
+                <div>
+                    <label>
+                        Mật khẩu
+                    </label>
+                    @Html.TextBoxFor(p => p.Password, new { @class = "input-text", type = "password", placeholder = "Nhập mật khẩu" })
+                </div>
+                <p class="danger">@Html.ValidationMessageFor(p => p.Password)</p>
+                <button class="button blue medium" type="submit"><b>ĐĂNG NHẬP</b></button>
+                <p class="danger">@ViewData["SigninError"]</p>
+            }
+            <p class="text-center text-style">
+                <br>Chưa có tài khoản? &nbsp;
             </p>
-        </a>
-    </div>
+            <a href="@Url.Action("Signup", "Account")" class="button gray medium">
+                Tạo tài khoản
+            </a>
+            <a href="#">
+                <p class="text-right text-style">
+                    Quên mật khẩu?
+                </p>
+            </a>
+        </div>
+    </main>
 </body>
 </html>
-

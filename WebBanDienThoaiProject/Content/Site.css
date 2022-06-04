@@ -9,6 +9,11 @@ body {
     background-color: rgba(243, 243, 243, 1);
 }
 
+.danger {
+    color: red;
+    text-align: center;
+}
+
 
 /**
 * Header
@@ -98,11 +103,17 @@ a {
             width: 17px;
         }
 
+.badge {
+    background-color: #f02020;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 5px 8px;
+    font-size: 12px;
+}
 
 /**
 * Nav Item
 **/
-
 .nav-item nav {
     z-index: 1000;
 }
@@ -657,6 +668,7 @@ small {
 .border-frames {
     border: rgb(201, 201, 201) 1px solid;
     border-radius: 5px;
+    padding: 20px;
 }
 
 .small-container {
@@ -727,11 +739,6 @@ textarea {
     resize: none;
 }
 
-.border-frames {
-    padding: 20px;
-    min-width: 500px;
-}
-
 .clearfix {
     display: block;
     margin-bottom: 10px;
@@ -764,7 +771,7 @@ textarea {
 
 .left-content,
 .right-content {
-    padding: 20px;                 `
+    padding: 20px;
 }
 
 .tel {

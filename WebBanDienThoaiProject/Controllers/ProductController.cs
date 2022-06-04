@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebBanDienThoaiProject.Models;
+using WebBanDienThoaiProject.ViewModels;
 
 namespace WebBanDienThoai.Controllers
 {

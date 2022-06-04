@@ -9,100 +9,98 @@
     <title>Web bán điện thoại</title>
 </head>
 <body>
-    <div class="header">
-        <div class="container">
+    <div class="grid-container">
+        <header class="row">
             <div class="navbar">
-                <div class="logo">
-                    <a href="@Url.Action("Index", "TrangChu")">
+                <div>
+                    <a href="@Url.Action("Index", "Home")">
                         <img src="~/Content/Images/head-logo.png" alt="Logo" style="width: 125px">
                     </a>
                 </div>
 
                 <form class="search">
-                    <input class="input_search" type="text" placeholder="Bạn tìm gì..." autocomplete="off" maxlength="100">
-                    <button type="submit">
+                    <input type="text" placeholder="Bạn tìm gì..." autocomplete="off" maxlength="100">
+                    <button type="submit" style="height: 40px; width: 40px;">
                         <i class="icon_search far fa-search"></i>
                     </button>
                 </form>
 
-                <nav>
-                    <ul class="MenuItems">
-                        <li>
-                            <a href="@Url.Action("Index", "TrangChu")">
-                                <i class="fas fa-home"></i> Home
-                            </a>
-                            <a href="@Url.Action("Index", "SanPham")">
-                                <i class="fas fa-mobile-alt"></i> Product
-                            </a>
-                            <a href="@Url.Action("Index", "VeChungToi")">
-                                <i class="fas fa-info"></i> About Us
-                            </a>
-                            <a href="@Url.Action("Index", "LienHe")">
-                                <i class="fas fa-address-card"></i> Contacts
-                            </a>
-                            <div class="dropdown">
-                                <a href="#">
-                                    <i class="fas fa-user"></i> Account
-                                </a>
-                                <ul class="dropdown-content">
-                                    <li>
-                                        <a href="@Url.Action("DangNhap", "TaiKhoan")">Đăng Nhập</a>
-                                    </li>
-                                    <li>
-                                        <a href="@Url.Action("DangKy", "TaiKhoan")">Đăng Ký</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <a href="@Url.Action("Index", "GioHang")">
-                                <i class="fas fa-shopping-cart"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-        </div>
-    </div>
-
-    @RenderBody()
-
-    <!--Footer-->
-    <div class="footer ">
-        <div class="container ">
-            <div class="_row center-item">
-                <div class="footer-col-1 ">
-                    <h3>Download Our App</h3>
-                    <p>Download App for Android and iOS mobile phone.</p>
-                    <div class="app-logo ">
-                        <img src="~/Content/Images/play-store.png" alt=" ">
-                        <img src="~/Content/Images/app-store.png" alt=" ">
+                <a href="@Url.Action("Index", "Home")">
+                    <i class="fas fa-home"></i>&nbsp;Home
+                </a>
+                <a href="@Url.Action("Index", "Product")">
+                    <i class="fas fa-mobile-alt"></i>&nbsp;Products
+                </a>
+                <a href="@Url.Action("Index", "AboutUs")">
+                    <i class="fas fa-info"></i>&nbsp;About
+                </a>
+                <a href="#">
+                    <i class="fas fa-address-card"></i>&nbsp;Contacts
+                </a>
+                @if (Session["Account"] == null)
+                {
+                    <div class="dropdown">
+                        <a href="#">
+                            <i class="fas fa-user"></i>&nbsp;Account
+                        </a>
+                        <ul class="dropdown-content">
+                            <li>
+                                <a href="@Url.Action("Signin", "Account")">Đăng Nhập</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Signup", "Account")">Đăng Ký</a>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="footer-col-2 ">
-                    <img src="~/Content/Images/footer-logo.png" alt="Logo ">
-                    <p>Our Purpose Is To Sustainably Make the Plesure and Benefits of Sports Accessible to the Many.</p>
-                </div>
-                <div class="footer-col-3 ">
-                    <h3>Contact us</h3>
-                    <ul>
-                        <li>0354.321.915</li>
-                        <li>support@apple.com</li>
-                        <li>admin@apple.com</li>
-                        <li>admin@apple.com</li>
-                    </ul>
-                </div>
-                <div class="footer-col-4 ">
-                    <h3>Follow us</h3>
-                    <ul>
-                        <li>Facebook</li>
-                        <li>Twitter</li>
-                        <li>Instagram</li>
-                        <li>Youtube</li>
-                    </ul>
-                </div>
+                }
+                else
+                {
+                    <div class="dropdown">
+                        <a href="#">
+                            @using WebBanDienThoaiProject.Models;
+                            @{
+                                MemberAccount account = (Session["Account"] as MemberAccount);
+                                string[] nameSplit = account.FullName.Split(' ');
+                                string Name = nameSplit[nameSplit.Length - 1];
+                            }
+                            <i class="fas fa-user"></i>&nbsp;Hi,&nbsp;@Name
+                        </a>
+                        <ul class="dropdown-content">
+                            <li>
+                                <a href="@Url.Action("AccountDetail", "Account", new { id = account.ID })">Tài khoản</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Signout", "Account")">Đăng Xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                }
+                @using WebBanDienThoaiProject.ViewModels;
+                @{
+                    List<ShoppingCartViewModel> CartList = Session["Cart"] as List<ShoppingCartViewModel>;
+                    int CartQuantity = 0;
+                    if (CartList == null)
+                    {
+                        CartQuantity = 0;
+                    }
+                    else
+                    {
+                        CartQuantity = CartList.Count;
+                    }
+                }
+                <a href="@Url.Action("Index", "ShoppingCart")" style="position: relative;">
+                    <img src="~/Content/Images/cart.png" alt="Cart" width="30" height="30" style="position: absolute;">
+                    <span class="badge" style="position: relative; margin-left: 15px;">@CartQuantity</span>
+                </a>
             </div>
-            <hr>
-            <div class="copyright ">Copyright 2022 Apple Team</div>
-        </div>
+        </header>
     </div>
+
+    <main>
+        @RenderBody()
+    </main>
+
+    <footer>
+    </footer>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿
+﻿@model List<WebBanDienThoaiProject.Models.Product>
 @{
     ViewBag.Title = "TimKiemSanPham";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -6,7 +6,7 @@
 
 <div class="container">
     <!--NAVBAR LOẠI SẢN PHẨM-->
-    @Html.Action("LoaiSanPham", "TrangChu")
+    @Html.Action("ProductTypes", "Home")
     <!--CONTENT-->
     <h4><b>KẾT QUẢ TÌM KIẾM</b></h4>
     <div class="_row">
@@ -18,18 +18,18 @@
                         <p><b>Giảm 5%</b></p>
                     </div>
                     <div>
-                        <a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = item.MaSP })">
-                            <img src="~/Content/Images/@item.HinhAnh" alt="@item.TenSP" />
+                        <a href="@Url.Action("ProductDetails", "Product", new { id = item.ID })">
+                            <img src="~/Content/Images/@item.ImageURL" alt="@item.ProductName" />
                         </a>
                     </div>
                     <div>
-                        <a href="@Url.Action("ChiTietSanPham", "SanPham", new { id = item.MaSP })">
-                            <p>@item.TenSP</p>
+                        <a href="@Url.Action("ProductDetails", "Product", new { id = item.ID })">
+                            <p>@item.ProductName</p>
                         </a>
                     </div>
                     <div>
-                        <p class="current-price">@item.DonGia&nbsp;đ</p><br>
-                        <p class="old-price">@item.DonGia&nbsp;đ</p>
+                        <p class="current-price">@item.Price&nbsp;đ</p><br>
+                        <p class="old-price">@item.Price&nbsp;đ</p>
                     </div>
                     <div class="rating">
                         <i class="fas fa-star"></i>

@@ -19,8 +19,6 @@ namespace WebBanDienThoaiProject.Models
 
         public Guid? MemberTypeID { get; set; }
 
-        public Guid? MaBinhLuan { get; set; }
-
         [Required]
         [StringLength(255)]
         public string Email { get; set; }
